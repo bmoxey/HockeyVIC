@@ -39,9 +39,9 @@ struct LadderView: View {
                         Spacer()
                         VStack {
                             Text("Goals")
-                            Text("for-agst=dif")
+                            Text("for - agst")
                         }
-                            .frame(width: 80, alignment: .center)
+                            .frame(width: 100, alignment: .center)
                         Text("Pld")
                             .frame(width: 40, alignment: .center)
                         Text("Pts")
@@ -74,7 +74,7 @@ struct LadderView: View {
                                 HStack {
                                     Spacer()
                                     Text("\(item.scoreFor)-\(item.scoreAgainst)=\(item.diff)")
-                                        .frame(width: 80, alignment: .center)
+                                        .frame(width: 100, alignment: .center)
                                     Text("\(item.played)")
                                         .frame(width: 40, alignment: .center)
                                     Text("\(item.points)")
