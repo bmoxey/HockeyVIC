@@ -14,12 +14,23 @@ struct GetCompsView: View {
     @State private var selectedCompFilter = "All"
     @State private var compfilterOptions: [String] = []
     @State private var typeFilterOptions: [String] = []
+    @State private var searchText: String = ""
     var filteredComps: [Team] {
-        var filteredComps = comps
-        if selectedCompFilter != "All" { filteredComps = filteredComps.filter { $0.compName == selectedCompFilter }}
-        if selectedTypeFilter != "All" { filteredComps = filteredComps.filter { $0.type == selectedTypeFilter }}
-        return filteredComps
+        return comps.filter { comp in
+//            let matchesSearchText = searchText.isEmpty || comp.divName.localizedCaseInsensitiveContains(searchText)
+            let matchesCompFilter = selectedCompFilter == "All" || comp.compName == selectedCompFilter
+            let matchesTypeFilter = selectedTypeFilter == "All" || comp.type == selectedTypeFilter
+            return matchesCompFilter && matchesTypeFilter
+//            return matchesSearchText && matchesCompFilter && matchesTypeFilter
+        }
     }
+//    var filteredComps: [Team] {
+//        var filteredComps = comps
+//        if searchText != "" {filteredComps = filteredComps.filter { $0.divName.localizedCaseInsensitiveContains(searchText) }}
+//        if selectedCompFilter != "All" { filteredComps = filteredComps.filter { $0.compName == selectedCompFilter }}
+//        if selectedTypeFilter != "All" { filteredComps = filteredComps.filter { $0.type == selectedTypeFilter }}
+//        return filteredComps
+//    }
     var body: some View {
         List{
             if comps.isEmpty {
@@ -43,6 +54,15 @@ struct GetCompsView: View {
                         }
                 }
             } else {
+//                if comps.count > 15 {
+//                    HStack {
+//                        Text("Search:")
+//                            .foregroundStyle(Color("TextColor"))
+//                        TextField("Search", text: $searchText, prompt: Text("search text"))
+//                            .foregroundStyle(Color("TextColor"))
+//                    }
+//                    .listRowBackground(Color("BackColor"))
+//                }
                 if compfilterOptions.count > 2 || typeFilterOptions.count > 2 {
                     VStack {
                         if compfilterOptions.count > 2 {

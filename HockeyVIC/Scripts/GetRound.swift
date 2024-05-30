@@ -57,6 +57,7 @@ func getRound(team: Team, currentRound: Rounds) async ->  ([Round], [String]) {
         if lines[i].contains("/game/") {
             myRound.gameID = String(lines[i].split(separator: "/")[3])
             myRound.id = UUID()
+            myRound.myTeam = team.teamName
             rounds.append(myRound)
             myRound = Round()
         }

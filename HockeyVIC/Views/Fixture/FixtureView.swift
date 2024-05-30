@@ -20,6 +20,7 @@ struct FixtureView: View {
     @State var currentFixture: Fixture? = Fixture()
     @State var address: String = ""
     @State var searchTeam: String = ""
+    @State private var showConfetti = false
     var body: some View {
         let currentTeam: Team = myteams.first(where: { $0.isCurrent }) ?? Team(clubName: currentAssoc.code)
         NavigationStack() {
@@ -75,12 +76,18 @@ struct FixtureView: View {
                             AudioServicesPlaySystemSound(1519)
                             if currentFixture?.result != "BYE" {
                                 (myRound, myPlayers) = await getGame(fixture: currentFixture ?? Fixture())
+                                if myRound.roundNo.contains("Grand Final") && myRound.result == "Win" {
+                                    showConfetti = true
+                                } else {
+                                    showConfetti = false
+                                }
                                 haveRound = true
                             }
                         }
                     })
                 }
             }
+            .displayConfetti(isActive: $showConfetti)
             .onAppear {
                 fixtures = []
                 haveData = false

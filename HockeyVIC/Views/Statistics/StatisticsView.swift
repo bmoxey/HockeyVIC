@@ -40,38 +40,8 @@ struct StatisticsView: View {
                             }
                     }
                 } else {
-                    if !haveData {
-                        HStack(alignment: .center, spacing: 0) {
-                            Text("Loading ... ")
-                                .foregroundStyle(Color("TextColor"))
-                            Text("\(count)")
-                                .foregroundStyle(Color("AccentColor"))
-                            Text(" of ")
-                                .foregroundStyle(Color("TextColor"))
-                            Text("\(total)")
-                                .foregroundStyle(Color("AccentColor"))
-                            GeometryReader { geometry in
-                                HStack(spacing: 0) {
-                                    let maxWidth = Int(geometry.size.width - 20)
-                                    Spacer()
-                                    Rectangle()
-                                        .fill(Color("AccentColor"))
-                                        .frame(width: CGFloat(count * maxWidth / total), height: 20)
-                                        .padding(.all, 0)
-                                    Rectangle()
-                                        .fill(Color("TextColor").opacity(0.2))
-                                        .frame(width: CGFloat((total - count) * maxWidth / total), height: 20)
-                                        .padding(.all, 0)
-                                    Spacer()
-                                }
-                                .frame(height: 40)
-                            }
-                            .frame(maxHeight: .infinity)
-                        }
-                        .listRowBackground(Color("BackColor"))
-                    }
                     StatsHeader(sortMode: $sortMode, sortAscending: $sortAscending, sortedByName: $sortedByName, sortedByNameValue: $sortedByNameValue, sortedByValue: $sortedByValue)
-                        
+                        .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                     ForEach(players.sorted(by: sortDescriptor)) { player in
                         StatsDetail(player: player)
                             .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
@@ -169,7 +139,7 @@ struct StatisticsView: View {
         var myPlayer = Player()
         var lines: [String] = []
         var fillins: Bool = false
-        var games: [Player] = []
+//        var games: [Player] = []
         lines = GetUrl(url: "https://revolutionise.com.au/\(currentTeam.assocCode)/games/team-stats/" + currentTeam.compID + "?team_id=" + currentTeam.teamID)
         total = lines.filter { $0.contains("/games/statistics/") }.count
         count = 0
@@ -188,14 +158,11 @@ struct StatisticsView: View {
                 myPlayer.captain = false
                 (myPlayer.name, myPlayer.surname, myPlayer.captain) = FixName(fullname: lines[i+1].capitalized.trimmingCharacters(in: CharacterSet.letters.inverted))
                 myPlayer.numberGames = Int(lines[i+7].trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
-                if myPlayer.numberGames > 0 {
-                    games = await getPlayer(player: myPlayer, team: currentTeam)
-                    myPlayer.goals = games.reduce(0) { result, myPlayer in result + myPlayer.goals }
-                    myPlayer.greenCards = games.reduce(0) { result, myPlayer in result + myPlayer.greenCards }
-                    myPlayer.yellowCards = games.reduce(0) { result, myPlayer in result + myPlayer.yellowCards }
-                    myPlayer.redCards = games.reduce(0) { result, myPlayer in result + myPlayer.redCards }
-                    myPlayer.goalie = games.reduce(0) { result, myPlayer in result + myPlayer.goalie }
-                }
+                myPlayer.goals = Int(lines[i+11].trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
+                myPlayer.greenCards = Int(lines[i+15].trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
+                myPlayer.yellowCards = Int(lines[i+19].trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
+                myPlayer.redCards = Int(lines[i+23].trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
+                myPlayer.goalie = Int(lines[i+27].trimmingCharacters(in: .whitespacesAndNewlines)) ?? 0
                 players.append(myPlayer)
                 myPlayer = Player()
                 fillins = false

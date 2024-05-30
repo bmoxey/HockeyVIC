@@ -109,6 +109,3 @@ struct TeamView: View {
     }
 }
 
-#Preview {
-    TeamView()
-}

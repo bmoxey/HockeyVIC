@@ -12,6 +12,7 @@
 		AF2371DB2BEC5B1300256FC9 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2371DA2BEC5B1300256FC9 /* SplashScreen.swift */; };
 		AF2371DD2BECB50400256FC9 /* AssocInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2371DC2BECB50400256FC9 /* AssocInfoView.swift */; };
 		AF781AD12BEC514E007453F3 /* CustomTeamSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF781AD02BEC514E007453F3 /* CustomTeamSelector.swift */; };
+		AF7FD0492BF48006001AE2C5 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD0482BF48006001AE2C5 /* ConfettiView.swift */; };
 		AF92FAE82BEB60CD0084DB5C /* Rounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF92FAE72BEB60CD0084DB5C /* Rounds.swift */; };
 		AF92FAEA2BEB66E80084DB5C /* GetRounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF92FAE92BEB66E80084DB5C /* GetRounds.swift */; };
 		AF92FAEC2BEB68730084DB5C /* SelectRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF92FAEB2BEB68730084DB5C /* SelectRound.swift */; };
@@ -68,6 +69,7 @@
 		AF2371DA2BEC5B1300256FC9 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		AF2371DC2BECB50400256FC9 /* AssocInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssocInfoView.swift; sourceTree = "<group>"; };
 		AF781AD02BEC514E007453F3 /* CustomTeamSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTeamSelector.swift; sourceTree = "<group>"; };
+		AF7FD0482BF48006001AE2C5 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		AF92FAE72BEB60CD0084DB5C /* Rounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rounds.swift; sourceTree = "<group>"; };
 		AF92FAE92BEB66E80084DB5C /* GetRounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRounds.swift; sourceTree = "<group>"; };
 		AF92FAEB2BEB68730084DB5C /* SelectRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRound.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				AFEF00912BEA48B600096867 /* GroundView.swift */,
 				AFEF00932BEA57AB00096867 /* PlayedFixture.swift */,
 				AFEF00952BEA5B9500096867 /* PlayersView.swift */,
+				AF7FD0482BF48006001AE2C5 /* ConfettiView.swift */,
 			);
 			path = Fixture;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				AF2371DB2BEC5B1300256FC9 /* SplashScreen.swift in Sources */,
 				AF92FAE82BEB60CD0084DB5C /* Rounds.swift in Sources */,
 				AF9E794F2BE74136009B4AD1 /* MainMenu.swift in Sources */,
+				AF7FD0492BF48006001AE2C5 /* ConfettiView.swift in Sources */,
 				AFEF00902BEA3E8900096867 /* DateBoxView.swift in Sources */,
 				AFEF00822BE9F09D00096867 /* Round.swift in Sources */,
 				AF92FAFA2BEB9D1C0084DB5C /* GetPlayer.swift in Sources */,

@@ -26,7 +26,7 @@ struct StatsHeader: View {
                     sortMode = 1
                 }
             }) {
-                Text(sortMode == 1 ? sortAscending ? "First▼" : "First▲" : "First")
+                Text(sortMode == 1 ? sortAscending ? "First▼" : "First▲" : "First▽")
                     .padding(.all, 0)
             }
             .buttonStyle(BorderlessButtonStyle())
@@ -41,7 +41,7 @@ struct StatsHeader: View {
                     sortMode = 2
                 }
             }) {
-                Text(sortMode == 2 ? sortAscending ? "Surname▼" : "Surname▲" : "Surname")
+                Text(sortMode == 2 ? sortAscending ? "Surname▼" : "Surname▲" : "Surname▽")
                     .padding(.all, 0)
             }
             .buttonStyle(BorderlessButtonStyle())
@@ -56,7 +56,7 @@ struct StatsHeader: View {
                     sortMode = 3
                 }
             }) {
-                Text(sortMode == 3 ? sortAscending ? "Goals▲" :"Goals▼" : "Goals" )
+                Text(sortMode == 3 ? sortAscending ? "Goals▲" :"Goals▼" : "Goals▽" )
             }
             .buttonStyle(BorderlessButtonStyle())
             Button(action: {
@@ -69,7 +69,7 @@ struct StatsHeader: View {
                     sortMode = 4
                 }
             }) {
-                Text(sortMode == 4 ? sortAscending ? "Games▲" :"Games▼" : "Games" )
+                Text(sortMode == 4 ? sortAscending ? "Games▲" :"Games▼" : "Games▽" )
             }
             .buttonStyle(BorderlessButtonStyle())
         }

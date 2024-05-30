@@ -13,7 +13,7 @@ struct PlayersView: View {
     @Binding var players: [Player]
     var body: some View {
         if !players.isEmpty {
-            Section(header: Text("Players").foregroundStyle(Color("TextColor"))) {
+            Section {
                 Picker("Team:", selection: $searchTeam) {
                     Text(myRound.homeTeam)
                         .tag(ShortTeamName(fullName: myRound.homeTeam))
@@ -82,6 +82,14 @@ struct PlayersView: View {
                         }
                         .listRowBackground(Color("BackColor"))
                     }
+                }
+            } header: {
+                HStack {
+                    Text("Players")
+                        .foregroundStyle(Color("TextColor"))
+                    Spacer()
+                    Text("Goals")
+                        .foregroundStyle(Color("TextColor"))
                 }
             }
             .onChange(of: myRound) {

@@ -37,14 +37,15 @@ struct LadderView: View {
                             .font(.footnote)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                         Spacer()
-                        Text("GF")
-                            .frame(width: 40, alignment: .trailing)
-                        Text("GA")
-                            .frame(width: 40, alignment: .trailing)
-                        Text("GD")
-                            .frame(width: 40, alignment: .trailing)
+                        VStack {
+                            Text("Goals")
+                            Text("for-agst=dif")
+                        }
+                            .frame(width: 80, alignment: .center)
+                        Text("Pld")
+                            .frame(width: 40, alignment: .center)
                         Text("Pts")
-                            .frame(width: 40, alignment: .trailing)
+                            .frame(width: 40, alignment: .center)
                         if ladder[0].winRatio != "" {
                             Text("WR")
                                 .frame(width: 60, alignment: .center)
@@ -56,41 +57,40 @@ struct LadderView: View {
                     .listRowBackground(Color("AccentColor"))
                     ForEach(ladder, id:\.id) {item in
                         HStack {
-                            Image(systemName: item.teamName == currentTeam.teamName ? "\(item.pos).circle.fill" : "\(item.pos).circle")
+                            
                             Image(GetClubName(teamName: item.teamName))
                                 .resizable()
                                 .frame(width: 45, height: 45)
                                 .padding(.vertical, -4)
                             VStack {
                                 HStack {
+                                    Image(systemName: item.teamName == currentTeam.teamName ? "\(item.pos).circle.fill" : "\(item.pos).circle")
+                                        .padding(.leading, 8)
                                     Text("\(item.teamName)")
                                         .font(.footnote)
                                         .foregroundStyle(Color("AccentColor"))
-                                        .padding(.leading, 8)
                                     Spacer()
                                 }
                                 HStack {
                                     Spacer()
-                                    Text("\(item.scoreFor)")
-                                        .frame(width: 40, alignment: .trailing)
-                                    Text("\(item.scoreAgainst)")
-                                        .frame(width: 40, alignment: .trailing)
-                                    Text("\(item.diff)")
-                                        .frame(width: 40, alignment: .trailing)
+                                    Text("\(item.scoreFor)-\(item.scoreAgainst)=\(item.diff)")
+                                        .frame(width: 80, alignment: .center)
+                                    Text("\(item.played)")
+                                        .frame(width: 40, alignment: .center)
                                     Text("\(item.points)")
-                                        .frame(width: 40, alignment: .trailing)
+                                        .frame(width: 40, alignment: .center)
                                     if item.winRatio != "" {
                                         Text("\(item.winRatio)")
-                                            .frame(width: 60, alignment: .trailing)
+                                            .frame(width: 60, alignment: .center)
                                     }
                                 }
                             }
                         }
                         .fontWeight(item.teamName == currentTeam.teamName ? .bold : .regular)
                         .listRowSeparatorTint( item.pos == 4 ? Color("TextColor") : Color(UIColor.separator), edges: .all)
+                        .listRowBackground(item.teamName == currentTeam.teamName ? Color("BackColor").opacity(0.5) : Color("BackColor"))
                     }
                     .foregroundStyle(Color("TextColor"))
-                    .listRowBackground(Color("BackColor"))
                 }
             }
             .onAppear {
